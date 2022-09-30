@@ -29,7 +29,7 @@ app.use(express.json());
 
 app.use(requestLogger);
 
-app.use(router);
+app.use('/api', router);
 /*
 app.post('/signup', signUpValidators, createUser);
 app.post('/signin', signInValidators, loginUser);
