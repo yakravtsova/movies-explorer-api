@@ -52,10 +52,10 @@ const getCurrentUser = (req, res, next) => {
 };
 
 const updateUser = (req, res, next) => {
-  const { name } = req.body;
+  const { email, name } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
-    { $set: { name } },
+    { $set: { email, name } },
     { new: true, runValidators: true },
   )
     .orFail(() => {
@@ -65,11 +65,13 @@ const updateUser = (req, res, next) => {
       res.status(200).send(user);
     })
     .catch((err) => {
-      if (err.name === 'ValidationError') {
-        next(new BadRequestError('Переданы некорректные данные для создания пользователя'));
-      } else {
-        next(err);
+      if (err.code === 11000) {
+        return next(new ConflictError('Пользователь с таким email уже существует!'));
       }
+      if (err.name === 'ValidationError') {
+        return next(new BadRequestError('Переданы некорректные данные для создания пользователя'));
+      }
+      return next(err);
     });
 };
 
