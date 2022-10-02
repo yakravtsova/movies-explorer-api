@@ -1,5 +1,5 @@
 const PORT = 3001;
-const DB_PATH = 'mongodb://localhost:27017/beatfilmsdb';
+const DB_PATH = 'mongodb://localhost:27017/moviesdb';
 const DEV_KEY = 'verysecretjwtkey';
 const SALT_ROUNDS = 10;
 

@@ -24,7 +24,7 @@ const userDataValidators = celebrate({
 
 const movieIdValidators = celebrate({
   params: Joi.object().keys({
-    movieId: Joi.string().alphanum().length(24),
+    movieId: Joi.string().alphanum().length(24).required(),
   }),
 });
 
@@ -38,7 +38,6 @@ const movieValidators = celebrate({
     image: Joi.string().regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/).required(),
     trailerLink: Joi.string().regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/).required(),
     thumbnail: Joi.string().regex(/^https?:\/\/(www\.)?[a-zA-Z0-9\-.]{1,}\.[a-zA-Z]{1,4}[a-zA-Z0-9\-._~:/?#[\]@!$&'()*+,;=]{1,}/).required(),
-    owner: Joi.string().alphanum().length(24).required(),
     movieId: Joi.number().integer().required(),
     nameRU: Joi.string().required(),
     nameEN: Joi.string().required(),
