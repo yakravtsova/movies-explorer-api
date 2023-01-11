@@ -28,5 +28,5 @@ $ git clone https://github.com/yakravtsova/movies-explorer-api.git
 # установка зависимостей
 $ npm install
 # запуск develop-сборки фронтенда
-$ npm run start
+$ npm run dev
 ```
